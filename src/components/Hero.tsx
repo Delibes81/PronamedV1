@@ -31,6 +31,16 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const scrollToProducts = () => {
+    const productsSection = document.getElementById('productos');
+    if (productsSection) {
+      window.scrollTo({
+        top: productsSection.offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="relative h-screen overflow-hidden">
       {slides.map((slide, index) => (
@@ -49,7 +59,7 @@ const Hero = () => {
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center">{slide.title}</h1>
             <p className="text-xl md:text-2xl mb-8 text-center max-w-3xl">{slide.subtitle}</p>
-            <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 transform hover:scale-105">
+            <button onClick={scrollToProducts} className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 transform hover:scale-105">
               Descubrir Productos
             </button>
           </div>
