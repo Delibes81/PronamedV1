@@ -31,11 +31,11 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToProducts = () => {
-    const productsSection = document.getElementById('productos');
-    if (productsSection) {
+  const scrollToNext = () => {
+    const aboutSection = document.getElementById('nosotros');
+    if (aboutSection) {
       window.scrollTo({
-        top: productsSection.offsetTop,
+        top: aboutSection.offsetTop,
         behavior: 'smooth'
       });
     }
@@ -59,12 +59,19 @@ const Hero = () => {
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-4">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center">{slide.title}</h1>
             <p className="text-xl md:text-2xl mb-8 text-center max-w-3xl">{slide.subtitle}</p>
-            <button onClick={scrollToProducts} className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 transform hover:scale-105">
-              Descubrir Productos
+            <button onClick={scrollToNext} className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 transform hover:scale-105">
+              Descubrir Más
             </button>
           </div>
         </div>
       ))}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+        <button onClick={scrollToNext} className="text-white animate-bounce">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 };
